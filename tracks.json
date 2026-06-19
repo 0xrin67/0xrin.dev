@@ -1,0 +1,5 @@
+[
+  { "title": "Accordion",         "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/accordion.mp3",     "cover": "audio/covers/madvillainy.jpg" },
+  { "title": "Meat Grinder",      "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/meat-grinder.mp3",  "cover": "audio/covers/madvillainy.jpg" },
+  { "title": "Bells Of DOOM",     "artist": "MF DOOM, The Prof.",          "src": "audio/bells-of-doom.mp3", "cover": "audio/covers/bells-of-doom.jpg" }
+]
