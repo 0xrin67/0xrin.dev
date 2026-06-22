@@ -314,3 +314,15 @@
   window.addEventListener('scroll', () => { if (raf === null) targetY = window.scrollY; }, { passive: true });
   window.addEventListener('resize', () => { targetY = Math.min(targetY, maxY()); });
 })();
+
+
+(function () {
+  const fab = document.getElementById('playerFab');
+  const player = document.getElementById('player');
+  if (!fab || !player) return;
+  fab.addEventListener('click', () => {
+    const shown = player.classList.toggle('show-mobile');
+    fab.classList.toggle('active', shown);
+    fab.setAttribute('aria-label', shown ? 'Hide music player' : 'Show music player');
+  });
+})();
