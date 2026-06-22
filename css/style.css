@@ -293,8 +293,8 @@ body::before {
 .num  { color: var(--syn-num); }
 .field{ color: var(--syn-var); }
 .prompt { color: var(--neon); }
-.cursor { color: var(--neon); animation: blink 1.05s steps(2) infinite; }
-.cursor-inline { color: var(--neon); animation: blink 1.05s steps(2) infinite; }
+.cursor { color: var(--neon); }
+.cursor-inline { color: var(--neon); }
 
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn {
@@ -1004,6 +1004,8 @@ body::before {
   .line-no { width: 24px; margin-right: 12px; }
 
   .player { top: 70px; right: 10px; left: 10px; width: auto; }
+  .player-body { max-height: 56vh; }
+  .playlist { max-height: 38vh; }
   .track-title { font-size: 0.8rem; }
   .track-artist { font-size: 0.65rem; }
   .visualizer { display: none !important; }
@@ -1011,12 +1013,4 @@ body::before {
   .stat-num { font-size: 1.5rem; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .reveal { opacity: 1; transform: none; }
-}
+

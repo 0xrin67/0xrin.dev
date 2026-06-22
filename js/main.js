@@ -278,3 +278,39 @@
     footerMemeEl.textContent = memes[Math.floor(Math.random() * memes.length)];
   }
 })();
+
+
+(function () {
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!fine) return;
+  let targetY = window.scrollY;
+  let curY = window.scrollY;
+  let raf = null;
+  const ease = 0.14;
+  const maxY = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  function tick() {
+    curY += (targetY - curY) * ease;
+    if (Math.abs(targetY - curY) < 0.4) { curY = targetY; window.scrollTo(0, curY); raf = null; return; }
+    window.scrollTo(0, curY);
+    raf = requestAnimationFrame(tick);
+  }
+  function innerScrollable(el) {
+    while (el && el !== document.body && el !== document.documentElement) {
+      if (el.scrollHeight > el.clientHeight) {
+        const oy = getComputedStyle(el).overflowY;
+        if (oy === 'auto' || oy === 'scroll') return true;
+      }
+      el = el.parentElement;
+    }
+    return false;
+  }
+  window.addEventListener('wheel', (e) => {
+    if (e.ctrlKey || e.deltaMode !== 0) return;
+    if (innerScrollable(e.target)) return;
+    e.preventDefault();
+    targetY = Math.max(0, Math.min(maxY(), targetY + e.deltaY));
+    if (raf === null) { curY = window.scrollY; raf = requestAnimationFrame(tick); }
+  }, { passive: false });
+  window.addEventListener('scroll', () => { if (raf === null) targetY = window.scrollY; }, { passive: true });
+  window.addEventListener('resize', () => { targetY = Math.min(targetY, maxY()); });
+})();

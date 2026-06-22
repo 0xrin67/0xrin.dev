@@ -35,10 +35,10 @@
   const vctx          = visualizer.getContext('2d');
 
   let currentIndex = 0;
-  let lastVolume = 0.7;
+  let lastVolume = 0.25;
   let isMuted = false;
 
-  const savedVol = parseFloat(localStorage.getItem('0xrin_vol'));
+  const savedVol = parseFloat(localStorage.getItem('0xrin_vol_v2'));
   if (!isNaN(savedVol) && savedVol >= 0 && savedVol <= 1) lastVolume = savedVol;
 
   let audioCtx = null;
@@ -160,7 +160,7 @@
     muteBtn.innerHTML = isMuted ? ICONS.volMute : ICONS.volOn;
     muteBtn.setAttribute('aria-label', isMuted ? 'Unmute' : 'Mute');
     if (v > 0) lastVolume = v;
-    localStorage.setItem('0xrin_vol', String(v));
+    localStorage.setItem('0xrin_vol_v2', String(v));
   }
 
   function renderPlaylist() {
@@ -210,7 +210,7 @@
   nextBtn.addEventListener('click', () => loadTrack(currentIndex + 1, true));
 
   muteBtn.addEventListener('click', () => {
-    if (isMuted || audio.volume === 0) setVolume(lastVolume || 0.7);
+    if (isMuted || audio.volume === 0) setVolume(lastVolume || 0.25);
     else setVolume(0);
   });
 
