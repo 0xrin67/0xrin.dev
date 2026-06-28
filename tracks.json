@@ -1,5 +1,10 @@
 [
-  { "title": "Accordion",         "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/accordion.mp3",     "cover": "audio/covers/madvillainy.jpg" },
-  { "title": "Meat Grinder",      "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/meat-grinder.mp3",  "cover": "audio/covers/madvillainy.jpg" },
-  { "title": "Bells Of DOOM",     "artist": "MF DOOM, The Prof.",          "src": "audio/bells-of-doom.mp3", "cover": "audio/covers/bells-of-doom.jpg" }
+  { "title": "Accordion",         "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/accordion.mp3",     "cover": "audio/covers/madvillainy.jpg"  },
+  { "title": "Meat Grinder",      "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/meat-grinder.mp3",  "cover": "audio/covers/madvillainy.jpg"  },
+  { "title": "Curls",             "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/curls.mp3",         "cover": "audio/covers/madvillainy.jpg"  },
+  { "title": "Strange Ways",      "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/strange-ways.mp3",  "cover": "audio/covers/madvillainy.jpg"  },
+  { "title": "All Caps",          "artist": "Madvillain, Madlib, MF DOOM", "src": "audio/all-caps.mp3",      "cover": "audio/covers/madvillainy.jpg"  },
+  { "title": "One Beer",          "artist": "MF DOOM",                     "src": "audio/one-beer.mp3",      "cover": "audio/covers/MMFOOD.jpg"       },
+  { "title": "Vomitspit",         "artist": "MF DOOM",                     "src": "audio/vomitspit.mp3",     "cover": "audio/covers/MMFOOD.jpg"       },
+  { "title": "Bells Of DOOM",     "artist": "MF DOOM, The Prof.",          "src": "audio/bells-of-doom.mp3", "cover": "audio/covers/bells-of-doom.jpg"}
 ]

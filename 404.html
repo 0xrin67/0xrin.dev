@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <title>404 — 0xrin</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>▸</text></svg>" />
+  <style>
+    :root { --neon:#b388ff; --bg:#0a0612; --fg:#f0ebff; --mute:#a99fc8; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html,body { height:100%; }
+    body {
+      font-family:'JetBrains Mono','SF Mono','Courier New',monospace;
+      background:var(--bg); color:var(--fg);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      min-height:100vh; text-align:center; padding:24px; gap:18px;
+    }
+    .code { font-size:clamp(64px,18vw,160px); font-weight:700; color:var(--neon); text-shadow:0 0 30px rgba(179,136,255,0.45); line-height:1; }
+    .msg { color:var(--mute); font-size:15px; }
+    .prompt { color:var(--neon); }
+    a.home {
+      margin-top:6px; display:inline-block; color:var(--neon);
+      border:1px solid rgba(179,136,255,0.4); border-radius:8px;
+      padding:10px 18px; transition:background .18s,color .18s;
+    }
+    a.home:hover { background:var(--neon); color:#000; box-shadow:0 0 16px rgba(179,136,255,0.5); }
+    a { text-decoration:none; color:inherit; }
+  </style>
+</head>
+<body>
+  <div class="code">404</div>
+  <p class="msg"><span class="prompt">$</span> cat page &nbsp;—&nbsp; No such file or directory</p>
+  <a class="home" href="/"><span class="prompt">$</span> cd ~</a>
+</body>
+</html>

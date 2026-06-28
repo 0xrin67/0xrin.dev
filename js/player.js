@@ -60,6 +60,8 @@
       analyser.connect(audioCtx.destination);
       audioReady = true;
       visualizer.classList.add('active');
+      visualizer.width = visualizer.clientWidth || 320;
+      visualizer.height = visualizer.clientHeight || 36;
     } catch (err) {
       console.warn('[player] Web Audio API unavailable:', err);
     }
@@ -72,30 +74,28 @@
     const H = visualizer.height;
     vctx.clearRect(0, 0, W, H);
 
-    if (!analyser || audio.paused) {
-
-      const t = Date.now() / 600;
-      const bars = 24;
-      const bw = W / bars;
-      for (let i = 0; i < bars; i++) {
-        const amp = (Math.sin(t + i * 0.4) * 0.5 + 0.5) * 0.15 + 0.06;
-        const bh = amp * H;
-        vctx.fillStyle = `rgba(179, 136, 255, ${0.25 + amp})`;
-        vctx.fillRect(i * bw + 1, H - bh, bw - 2, bh);
-      }
-      return;
-    }
+    if (!analyser || audio.paused) return;
 
     analyser.getByteFrequencyData(freqData);
-    const bars = freqData.length;
+
+    const usable = Math.floor(freqData.length * 0.7);
+    const bars = 40;
+    const step = usable / bars;
     const bw = W / bars;
+    const hex = window.__accentHex || '#b388ff';
+
+    vctx.fillStyle = hex;
+    vctx.shadowColor = hex;
+    vctx.shadowBlur = 6;
 
     for (let i = 0; i < bars; i++) {
-      const v = freqData[i] / 255;
-      const bh = Math.max(2, v * H);
-      vctx.fillStyle = '#b388ff';
-      vctx.shadowColor = '#b388ff';
-      vctx.shadowBlur = 6;
+      let sum = 0, n = 0;
+      const start = Math.floor(i * step);
+      const end = Math.floor((i + 1) * step);
+      for (let j = start; j < end; j++) { sum += freqData[j]; n++; }
+      const v = (n ? sum / n : 0) / 255;
+      const bh = v * H;
+      if (bh < 1) continue;
       vctx.fillRect(i * bw + 1, H - bh, bw - 2, bh);
     }
     vctx.shadowBlur = 0;
@@ -110,8 +110,8 @@
 
   function loadTrack(index, autoplay) {
     if (!TRACKS.length) {
-      trackTitle.textContent = 'no tracks';
-      trackArtist.textContent = 'drop mp3 into /audio';
+      trackTitle.textContent = (window.I18N && window.I18N.dyn('noTrackTitle')) || 'no tracks';
+      trackArtist.textContent = (window.I18N && window.I18N.dyn('noTrackArtistDrop')) || 'drop mp3 into /audio';
       return;
     }
     currentIndex = (index + TRACKS.length) % TRACKS.length;
@@ -267,7 +267,7 @@
     })
     .catch((err) => {
       console.warn('[player] tracks.json not loaded:', err);
-      trackTitle.textContent = 'no tracks';
-      trackArtist.textContent = 'edit tracks.json';
+      trackTitle.textContent = (window.I18N && window.I18N.dyn('noTrackTitle')) || 'no tracks';
+      trackArtist.textContent = (window.I18N && window.I18N.dyn('noTrackArtistEdit')) || 'edit tracks.json';
     });
 })();
